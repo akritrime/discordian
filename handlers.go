@@ -20,5 +20,4 @@ func ping(s *dg.Session, m *dg.MessageCreate) {
 
 func commands(s *dg.Session, m *dg.MessageCreate) {
 	fmt.Println(isBotCommand(m.Content, ">"))
-
 }
