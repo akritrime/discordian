@@ -13,6 +13,10 @@ var (
 	botID string
 )
 
+const (
+	creatorID = "399951813237014528"
+)
+
 func main() {
 
 	// Get the bot token from the environment variables
