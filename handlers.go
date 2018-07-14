@@ -21,12 +21,15 @@ func ping(s *dg.Session, m *dg.MessageCreate) {
 }
 
 func commands(s *dg.Session, m *dg.MessageCreate) {
+	// the command handler for detecting and executing the bot commands. Its a just a giant swicth case
 	msg, flag := isBotCommand(m.Content, ">")
 	if !flag {
 		return
 	}
 
 	cmd := strings.Split(msg, " ")
+
+	// switch case for all the commands
 	switch cmd[0] {
 
 	case "info":
