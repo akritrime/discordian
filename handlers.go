@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	dg "github.com/bwmarrin/discordgo"
 )
 
@@ -13,5 +15,10 @@ func ping(s *dg.Session, m *dg.MessageCreate) {
 	if m.Content == "!ping" {
 		s.ChannelMessageSend(m.ChannelID, "pong")
 	}
+
+}
+
+func commands(s *dg.Session, m *dg.MessageCreate) {
+	fmt.Println(isBotCommand(m.Content, ">"))
 
 }

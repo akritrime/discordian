@@ -9,9 +9,13 @@ import (
 	dg "github.com/bwmarrin/discordgo"
 )
 
+var (
+	botID string
+)
+
 func main() {
 
-	// Get the bot toke from the environment variables
+	// Get the bot token from the environment variables
 	tk := os.Getenv("TOKEN")
 	if tk == "" {
 		fmt.Println("VAR TOKEN NOT SET. Please create a discord application as bot user and use the generated token.")
@@ -25,12 +29,22 @@ func main() {
 		fmt.Println("Error in bot", err)
 		return
 	}
+
+	// initalize the global variable botID
+	if u, err := bot.User("@me"); err != nil {
+		fmt.Println("Error in initialising the botID", err)
+	} else {
+		botID = u.ID
+	}
+
 	// add the handlers:
 
 	//   ready: updates status when the bot comes live
 	bot.AddHandler(ready)
 	//   ping: initial pingpong tests
 	bot.AddHandler(ping)
+	// commands: register all the available bot command
+	bot.AddHandler(commands)
 
 	// opens and closes the gateway
 	err = bot.Open()
