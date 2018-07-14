@@ -26,8 +26,11 @@ func main() {
 		return
 	}
 	// add the handlers:
+
 	//   ready: updates status when the bot comes live
 	bot.AddHandler(ready)
+	//   ping: initial pingpong tests
+	bot.AddHandler(ping)
 
 	// opens and closes the gateway
 	err = bot.Open()
