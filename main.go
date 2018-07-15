@@ -14,7 +14,7 @@ var (
 )
 
 const (
-	creatorID = "399951813237014528"
+	creatorID = "399951813237014528" // akritrime
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 		return
 	}
 
-	// prefix the token with bot and use it to create a new bot session
+	// prefix the token with Bot and use it to create a new bot session
 	bot, err := dg.New(fmt.Sprintf("Bot %v", tk))
 
 	if err != nil {
@@ -35,13 +35,14 @@ func main() {
 	}
 
 	// initalize the global variable botID
-	if u, err := bot.User("@me"); err != nil {
+	u, err := bot.User("@me")
+	if err != nil {
 		fmt.Println("Error in initialising the botID", err)
-	} else {
-		botID = u.ID
+		return
 	}
+	botID = u.ID
 
-	// add the handlers:
+	// add the handlers
 
 	//   ready: updates status when the bot comes live
 	bot.AddHandler(ready)

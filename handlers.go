@@ -31,7 +31,7 @@ func commands(s *dg.Session, m *dg.MessageCreate) {
 
 	// switch case for all the commands
 	switch cmd[0] {
-
+	// displays information about the bot
 	case "info":
 		s.ChannelMessageSend(m.ChannelID, "info")
 
